@@ -39,7 +39,7 @@ on = st.sidebar.checkbox("Code Interpreter", value=True, key=None, help=None, on
 
 
 st.image(os.getenv("LOGO_IMAGE_URL"))
-st.title("Assistant API")
+st.title("Lendi Assistant App")
 # st.divider()
 # st.write("This is a demo of the OpenAI GPT-4 model using the OpenAI Assistants API. This is a beta feature and is subject to change. Please use with caution")
 # st.divider()
@@ -72,8 +72,13 @@ if(st.session_state.fileId is not None):
     st.session_state.deleteFile = st.sidebar.toggle("Delete File after Chat", value=False, key=None, help=None, on_change=None, args=None, kwargs=None, disabled=False, label_visibility="visible")
     st.sidebar.text("File Id:" + st.session_state.fileId)    
     st.sidebar.text("File Uploaded: " + input_file.name)
-    
-if st.button("Start Chat"):
+
+if st.button(":broom: Clear Chat "):
+    st.session_state.messages = []  # Clear the chat history
+    st.session_state.start_chat = False  # Reset the chat state
+    st.session_state.thread_id = None
+
+if st.button(":robot_face: Start Chatting"):
     st.session_state.start_chat = True
     thread = client.beta.threads.create()
     st.session_state.thread_id = thread.id  
@@ -124,13 +129,10 @@ if st.session_state.start_chat:
             with st.chat_message("assistant"):
                 st.markdown(message.content[0].text.value)
 
-if st.button("Clear Chat"):
-    st.session_state.messages = []  # Clear the chat history
-    st.session_state.start_chat = False  # Reset the chat state
-    st.session_state.thread_id = None
-    
 
-if st.button("Reload page"):
+ 
+
+if st.sidebar.button("Reset Chat", type="primary"):
     streamlit_js_eval(js_expressions="parent.window.location.reload()")
     
  
