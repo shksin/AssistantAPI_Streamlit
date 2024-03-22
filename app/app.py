@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 
 
 
-# load_dotenv()  # take environment variables from .env.
+load_dotenv()  # take environment variables from .env.
 
 client = AzureOpenAI(
     api_key=os.getenv("AZURE_OPENAI_API_KEY"),  
@@ -34,6 +34,7 @@ st.sidebar.image(os.getenv("LOGO_IMAGE_URL"))
 st.sidebar.header("Assistant Setup")
 st.sidebar.text("Assistant Name: " + os.getenv("AZURE_OPENAI_ASSISTANT_NAME"))
 st.sidebar.text("Assistant ID: " + azureOpenAIAssistantId)
+st.sidebar.text("Assistant Instructions: " + os.getenv("AZURE_OPENAI_ASSISTANT_INSTRUCTIONS"))
 on = st.sidebar.checkbox("Code Interpreter", value=True, key=None, help=None, on_change=None, args=None, kwargs=None, disabled=True, label_visibility="visible")
 
 
@@ -42,7 +43,7 @@ st.title("Assistant API")
 # st.divider()
 # st.write("This is a demo of the OpenAI GPT-4 model using the OpenAI Assistants API. This is a beta feature and is subject to change. Please use with caution")
 # st.divider()
-st.write("Assistant Instructions: " + os.getenv("AZURE_OPENAI_ASSISTANT_INSTRUCTIONS"))
+
 
 #adding a file uploader
 input_file = st.sidebar.file_uploader("Please choose a file")
