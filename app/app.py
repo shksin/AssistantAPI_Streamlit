@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 
 
 
-load_dotenv()  # take environment variables from .env.
+# load_dotenv()  # take environment variables from .env.
 
 client = AzureOpenAI(
     api_key=os.getenv("AZURE_OPENAI_API_KEY"),  
