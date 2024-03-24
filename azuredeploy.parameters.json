@@ -16,6 +16,9 @@
         },
         "repoBranch": {
             "value": "master"
+        },
+        "logoImageUrl": {
+            "value": "https://lendigroup.com.au/wp-content/uploads/2023/01/brand_Lendigroup-Lendi.png"
         }
     }
 }

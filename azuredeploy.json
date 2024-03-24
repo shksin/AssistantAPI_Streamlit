@@ -58,6 +58,13 @@
         "metadata": {
           "description": "Git Repo branch to deploy"
         }
+      },
+      "logoImageUrl": {
+        "type": "string",
+        "defaultValue": "https://lendigroup.com.au/wp-content/uploads/2023/01/brand_Lendigroup-Lendi.png",
+        "metadata": {
+          "description": "Logo Image URL"
+        }
       }
     },
     "variables": {
@@ -89,7 +96,37 @@
         "properties": {
           "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]",
           "siteConfig": {
-            "linuxFxVersion": "[parameters('linuxFxVersion')]"
+            "linuxFxVersion": "[parameters('linuxFxVersion')]",
+            "appSettings": [
+              {
+                "name": "AZURE_OPENAI_API_KEY",
+                "value": "XXXXXXXXXXXXXXXX"
+              },
+              {
+                "name": "AZURE_OPENAI_ENDPOINT",
+                "value": "XXXXXXXXXXXXXXXX"
+              },
+              {
+                "name": "AZURE_OPENAI_ASSISTANT_NAME",
+                "value": "Finance Assistant"
+              },
+              {
+                "name": "AZURE_OPENAI_ASSISTANT_INSTRUCTIONS",
+                "value": "You are a financial assistant. You help users get relevant insights from structured data"
+              },
+              {
+                "name": "AZURE_OPENAI_ASSISTANT_ID",
+                "value": "XXXXXXXXXXXXXXXX"
+              },
+              {
+                "name": "AZURE_OPENAI_DEPLOYMENT_NAME",
+                "value": "gpt-4-1106-preview"
+              },
+              {
+                "name": "LOGO_IMAGE_URL",
+                "value": "[parameters('logoImageUrl')]"
+              }
+            ]
           }
         },
         "resources": [
