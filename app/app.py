@@ -5,7 +5,7 @@ from streamlit_js_eval import streamlit_js_eval
 import time
 import os
 from io import StringIO
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
 
 
